@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='detailed_analysis.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Detailed Analysis</h1>
+        <div id="analysis-results">
+            <p><strong>Average Yield:</strong> <span id="average_yield"></span> metric tons per hectare</p>
+            <p><strong>Maximum Yield:</strong> <span id="max_yield"></span> metric tons per hectare</p>
+            <p><strong>Minimum Yield:</strong> <span id="min_yield"></span> metric tons per hectare</p>
+            <p><strong>Yield by Crop Type:</strong></p>
+            <ul id="yield_by_crop_type"></ul>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                fetch('/detailed_analysis_data')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('average_yield').textContent = data.average_yield.toFixed(2);
+                        document.getElementById('max_yield').textContent = data.max_yield.toFixed(2);
+                        document.getElementById('min_yield').textContent = data.min_yield.toFixed(2);
+
+                        const yieldByCropType = data.yield_by_crop_type;
+                        const list = document.getElementById('yield_by_crop_type');
+                        for (const [crop, yieldValue] of Object.entries(yieldByCropType)) {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = `${crop}: ${yieldValue.toFixed(2)} metric tons per hectare`;
+                            list.appendChild(listItem);
+                        }
+                    });
+            });
+        </script>
+        <button onclick="window.location.href='/'" class="action-button">Back to Prediction Page</button>
+    </div>
+</body>
+</html>

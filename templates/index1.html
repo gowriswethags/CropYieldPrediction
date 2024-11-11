@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Yield Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles1.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Yield Predictor</h1>
+        <form id="prediction-form">
+            <div class="form-group">
+                <label for="temperature">Temperature (°C):</label>
+                <input type="number" id="temperature" name="temperature" required>
+            </div>
+            <div class="form-group">
+                <label for="rainfall">Rainfall (mm):</label>
+                <input type="number" id="rainfall" name="rainfall" required>
+            </div>
+            <div class="form-group">
+                <label for="soil_ph">Soil pH:</label>
+                <input type="number" id="soil_ph" name="soil_ph" required>
+            </div>
+            <div class="form-group">
+                <label for="soil_moisture">Soil Moisture (%):</label>
+                <input type="number" id="soil_moisture" name="soil_moisture" required>
+            </div>
+            <div class="form-group">
+                <label for="region">Region:</label>
+                <select id="region" name="region" required>
+                    <option value="" disabled selected>Select Region</option>
+                    <option value="north">North</option>
+                    <option value="south">South</option>
+                    <option value="east">East</option>
+                    <option value="west">West</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="crop_type">Crop Type:</label>
+                <select id="crop_type" name="crop_type" required>
+                    <option value="" disabled selected>Select Crop Type</option>
+                    <option value="wheat">Wheat</option>
+                    <option value="corn">Corn</option>
+                    <option value="rice">Rice</option>
+                    <option value="soybean">Soybean</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="soil_type">Soil Type:</label>
+                <select id="soil_type" name="soil_type" required>
+                    <option value="" disabled selected>Select Soil Type</option>
+                    <option value="clay">Clay</option>
+                    <option value="sandy">Sandy</option>
+                    <option value="silty">Silty</option>
+                    <option value="loamy">Loamy</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="sunlight_hours">Sunlight Hours:</label>
+                <input type="number" id="sunlight_hours" name="sunlight_hours" required>
+            </div>
+            <div class="form-group">
+                <label for="fertilizer_used">Fertilizer Used (kg/hectare):</label>
+                <input type="number" id="fertilizer_used" name="fertilizer_used" required>
+            </div>
+            <div class="form-group">
+                <label for="pesticides_used">Pesticides Used (kg/hectare):</label>
+                <input type="number" id="pesticides_used" name="pesticides_used" required>
+            </div>
+            <div class="form-group">
+                <label for="previous_crop">Previous Crop:</label>
+                <select id="previous_crop" name="previous_crop" required>
+                    <option value="" disabled selected>Select Previous Crop</option>
+                    <option value="none">None</option>
+                    <option value="corn">Corn</option>
+                    <option value="wheat">Wheat</option>
+                    <option value="soybean">Soybean</option>
+                </select>
+            </div>
+            <input type="submit" value="Predict">
+        </form>
+        <button onclick="redirectToPage('/historical')" class="action-button">View Historical Data</button>
+        <button onclick="redirectToPage('/detailed_analysis')" class="action-button">View Detailed Analysis</button>
+        <div id="prediction-result" class="prediction-result"></div>
+    </div>
+    <script src="{{ url_for('static', filename='script1.js') }}"></script>
+    <script>
+        function redirectToPage(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
