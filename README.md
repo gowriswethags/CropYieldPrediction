@@ -16,20 +16,19 @@ Ensure you have Python installed, along with the following libraries:
 - scikit-learn
 
 You can install these with:
-pip install pandas numpy scikit-learn
+`pip install pandas numpy scikit-learn`
 
 
 ### 2. Clone the Repository
 Copy code
-git clone https://github.com/your-username/crop-yield-prediction.git
-cd crop-yield-prediction
+`git clone https://github.com/your-username/crop-yield-prediction.git`
+`cd crop-yield-prediction`
 
 
 ### 3. Run the Model
 Load Data: Place your dataset (e.g., crop_yield_data.csv) in the project folder.
 Train the Model: Run the main script to train the model:
-
-python app1.py
+`python app1.py`
 Evaluate the Model: Model metrics (MSE, MAE, R²) will be displayed to assess accuracy.
 
 
